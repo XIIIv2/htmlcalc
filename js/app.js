@@ -20,7 +20,7 @@ function appendNumber(number) {
         currentInput = '';
         resetScreen = false;
     }
-    if (number === '.' && currentInput.includes('.')) return;
+    if ((number === '.' || number === ',') && currentInput.includes('.')) return;
     currentInput += number;
     updateDisplay();
 }
@@ -114,6 +114,7 @@ document.addEventListener('keydown', function(event) {
             appendOperator('/');
             break;
         case '.':
+        case ',':
             appendNumber('.');
             break;
         case 'Enter':
@@ -130,7 +131,7 @@ document.addEventListener('keydown', function(event) {
     
     if ((key >= '0' && key <= '9') || 
         key === '+' || key === '-' || key === '*' || key === '/' || 
-        key === '.' || key === 'Enter' || key === '=' || 
+        key === '.' || key === ',' || key === 'Enter' || key === '=' || 
         key === 'Backspace' || key === 'Escape') {
         event.preventDefault();
     }
